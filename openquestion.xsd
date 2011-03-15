@@ -7,8 +7,8 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="oq:qandaServiceName"/>
 				<xs:element ref="oq:agencyId"/>
+				<xs:element ref="oq:qandaServiceName"/>
 				<xs:element ref="oq:userName" minOccurs="0"/>
 				<xs:element ref="oq:userEmail" minOccurs="0"/>
 				<xs:element ref="oq:userMobilePhone" minOccurs="0"/>
@@ -20,6 +20,8 @@
 				<xs:element ref="oq:questionNote" minOccurs="0"/>
 				<xs:element ref="oq:questionDeadline" minOccurs="0"/>
 				<xs:element ref="oq:questionUsage" minOccurs="0"/>
+				<xs:element ref="oq:outputType" minOccurs="0"/>
+				<xs:element ref="oq:callback" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -36,7 +38,7 @@
 	</xs:element>
 	<xs:element name="agencyId">
 		<xs:annotation>
-			<xs:documentation xml:lang="en">...</xs:documentation>
+			<xs:documentation xml:lang="en">Identifier of system/UI that request is sent from</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="callback" type="xs:string">
@@ -99,7 +101,7 @@
 			<xs:documentation xml:lang="en">Questioner's email-address</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="userGender" type="xs:string">
+	<xs:element name="userGender" type="oq:userGenderType">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's gender</xs:documentation>
 		</xs:annotation>
@@ -136,6 +138,15 @@
 			<xs:enumeration value="xml"/>
 			<xs:enumeration value="json"/>
 			<xs:enumeration value="php"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="userGenderType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">female or male</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="f"/>
+			<xs:enumeration value="m"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
