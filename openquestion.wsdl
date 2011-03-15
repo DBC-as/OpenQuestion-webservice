@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:oq="http://oss.dbc.dk/ns/openquestion" xmlns:oqw="http://oss.dbc.dk/ns/openquestion_wsdl" targetNamespace="http://oss.dbc.dk/ns/openquestion_wsdl">
+   <wsdl:types>
+      <xs:schema elementFormDefault="qualified">
+			<xs:import schemaLocation="openquestion.xsd" namespace="http://oss.dbc.dk/ns/openquestion"/>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="createQuestionRequest">
+	   <wsdl:part name="body" element="oq:createQuestionRequest"/>
+   </wsdl:message>
+   <wsdl:message name="createQuestionResponse">
+	   <wsdl:part name="body" element="oq:createQuestionResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="questionPortType">
+	   <wsdl:operation name="createQuestion">
+		   <wsdl:input message="oqw:createQuestionRequest"/>
+		   <wsdl:output message="oqw:createQuestionResponse"/>
+	   </wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="questionSoapBinding" type="oqw:questionPortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="createQuestion">
+			<soap:operation soapAction="http://openquestion.addi.dk/createQuestion"/>
+			<wsdl:input name="createQuestionRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="createQuestionResponse">
+				<soap:body use="literal"/>			
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="openQuestionService">
+		<wsdl:port name="question" binding="oqw:questionSoapBinding">
+			<soap:address location="http://vision.dbc.dk/~fvs/broend/OpenLibrary/OpenQuestion/trunk/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
