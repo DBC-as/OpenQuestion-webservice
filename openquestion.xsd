@@ -12,6 +12,7 @@
 				<xs:element ref="oq:userName" minOccurs="0"/>
 				<xs:element ref="oq:userEmail" minOccurs="0"/>
 				<xs:element ref="oq:userMobilePhone" minOccurs="0"/>
+				<xs:element ref="oq:userAnswerPreference" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="oq:userAge" minOccurs="0"/>
 				<xs:element ref="oq:userGender" minOccurs="0"/>
 				<xs:element ref="oq:userPostalCode" minOccurs="0"/>
@@ -66,9 +67,9 @@
 			<xs:documentation xml:lang="en">The question asked</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="questionDeadline" type="xs:string">
+	<xs:element name="questionDeadline" type="xs:integer">
 		<xs:annotation>
-			<xs:documentation xml:lang="en">Questioner's deadline for the question</xs:documentation>
+			<xs:documentation xml:lang="en">Questioner's deadline for the question expressed in hours. -1 means no deadline</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="questionNote" type="xs:string">
@@ -86,7 +87,7 @@
 			<xs:documentation xml:lang="en">Title of the question asked</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="questionUsage" type="xs:string">
+	<xs:element name="questionUsage" type="oq:questionUsageType">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's intended usage for the question</xs:documentation>
 		</xs:annotation>
@@ -94,6 +95,11 @@
 	<xs:element name="userAge" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's age</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="userAnswerPreference" type="oq:userAnswerPreferenceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">How the questioner wants to receive an the answer</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="userEmail" type="xs:string">
@@ -138,6 +144,23 @@
 			<xs:enumeration value="xml"/>
 			<xs:enumeration value="json"/>
 			<xs:enumeration value="php"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="questionUsageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="business"/>
+			<xs:enumeration value="other"/>
+			<xs:enumeration value="personal"/>
+			<xs:enumeration value="school1"/>
+			<xs:enumeration value="school2"/>
+			<xs:enumeration value="school3"/>
+			<xs:enumeration value="school4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="userAnswerPreferenceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="email"/>
+			<xs:enumeration value="sms"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="userGenderType">
