@@ -37,7 +37,7 @@
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="agencyId">
+	<xs:element name="agencyId" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Identifier of system/UI that request is sent from</xs:documentation>
 		</xs:annotation>
