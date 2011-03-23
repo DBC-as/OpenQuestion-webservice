@@ -1,0 +1,114 @@
+; inifie for openquestion
+
+[setup]
+; To close a service, set service_http_error
+; service status - values:
+;service_http_error = HTTP/1.0 404 Not Found
+;service_http_error = HTTP/1.1 410 Gone
+;service_http_error = HTTP/1.0 503 Service Unavailable
+
+version = 0.1
+
+; wsdl for service
+wsdl = openquestion.wsdl
+
+; in_house_domain may use ?ShowInfo and use create_sample form
+;in_house_domain = .dbc.dk
+
+; set to TRUE to expose the create_sample form
+show_samples = 1
+
+; soapActions and their corresponding request structure
+; Can be found in the wsdl but is stated here for convenience
+soapAction[createQuestion] = createQuestionRequest
+
+; validate
+;validate[soap_request] = soap.xsd
+;validate[request] = openquestion.xsd
+;validate[response] = openquestion.xsd
+
+; prefixes and namespaces
+xmlns[] = http://oss.dbc.dk/ns/openquestion
+
+xmldir = ./xml
+
+; logfile for verbose output
+logfile = /tmp/netpunkt_fvs/openquestion.log
+
+; set verboselevel
+;   WARNING - simple warnings
+;   ERROR   - errors in response
+;   FATAL   - major errors
+;   STAT    - Statistical logging
+;   TIMER   - timer logging
+;   TRACE   - program trace
+;   DEBUG   - debugging info
+;   Z3959   - calls to z3950 services
+;   OCI     - oracle
+verbose = WARNING+ERROR+FATAL+STAT+TIMER+TRACE+DEBUG+Z3950
+
+; format for automatic timer dump %s is the soap-action used
+dump_timer = Question(%s)
+
+agency_credentials = some_user/some_pwd@some.server.dbc.dk
+
+[aaa]
+; aaa Authentication, Access control and Accounting
+; if aaa_credentials is set, the rights-object is created from 
+; the FORS-server or aaa_ip_rights below
+;
+; oci credentials for FORS server
+aaa_credentials = next_vip_kig/next@tora1.dbc.dk
+; memcache server - use localhost in one-webserver environment
+;aaa_cache_address = localhost:11211
+; number of seconds to cache authentication and access rights info
+;aaa_cache_seconds = 3600
+;
+; As an alternative to FORS rights, rights can be set here for selected ip-addresses
+; aaa_ip_rights[group-identifier][ip_list] = list of ip's
+; aaa_ip_rights[group-identifier][ressource][<named ressource>] = comma-separated rights to <named ressource>
+; aaa_ip_rights[group-identifier][ressource][<named ressource 2>] = comma-separated rights to <named ressource 2>
+;
+;aaa_ip_rights[dbc][ip_list] = 172.16.0.0-172.31.255.255;193.111.162.0-193.111.162.255
+;aaa_ip_rights[dbc][ressource][openquestion] = 500
+
+[rest]
+
+; REST parameters for SOAPactions
+;
+; use xml.path.to.par notation to solve name-conflicts
+; action[thisSoapAction][foo][] = some.number
+; action[thisSoapAction][bar][] = another.number
+; to build
+; <thisSoapAction>
+;   <foo>
+;     <number>nn</number>
+;   </foo>
+;   <bar>
+;     <number>mm</number>
+;   </bar>
+; </thisSoapAction>
+; from url: action=thisSoapAction&some.number=nn&another.number=mm
+;
+
+action[createQuestion][] = agencyId
+action[createQuestion][] = qandaServiceName
+action[createQuestion][] = userName
+action[createQuestion][] = userEmail
+action[createQuestion][] = userMobilePhone
+action[createQuestion][] = userAnswerPreference
+action[createQuestion][] = userAge
+action[createQuestion][] = userGender
+action[createQuestion][] = userPostalCode
+action[createQuestion][] = questionTitle
+action[createQuestion][] = questionContent
+action[createQuestion][] = questionNote
+action[createQuestion][] = questionDeadline
+action[createQuestion][] = questionUsage
+action[createQuestion][] = outputType
+action[createQuestion][] = callback
+
+[howru]
+;test[] = createQuestion&agencyId=710100&service=orsItemRequest
+;preg_match[] = <responder>710100
+;error[] = ERROR - Cannot find 710100 in VIP
