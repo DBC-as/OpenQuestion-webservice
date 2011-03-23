@@ -1,0 +1,33 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:open="http://oss.dbc.dk/ns/openquestion">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <open:createQuestionRequest>
+         <open:agencyId>DK-870970</open:agencyId>
+         <open:qandaServiceName>bibvagten</open:qandaServiceName>
+         <!--Optional:-->
+         <open:userName>Test</open:userName>
+         <!--Optional:-->
+         <open:userEmail>Test@test.test</open:userEmail>
+         <!--Optional:-->
+         <open:userMobilePhone>1234567</open:userMobilePhone>
+         <!--Zero or more repetitions:-->
+         <open:userAnswerPreference>sms</open:userAnswerPreference>
+         <open:userAnswerPreference>email</open:userAnswerPreference>
+         <!--Optional:-->
+         <open:userAge>123</open:userAge>
+         <!--Optional:-->
+         <open:userGender>m</open:userGender>
+         <!--Optional:-->
+         <open:userPostalCode>1234</open:userPostalCode>
+         <!--Optional:-->
+         <open:questionTitle>Titel</open:questionTitle>
+         <open:questionContent>Content</open:questionContent>
+         <!--Optional:-->
+         <open:questionNote>Note</open:questionNote>
+         <!--Optional:-->
+         <open:questionDeadline>24</open:questionDeadline>
+         <!--Optional:-->
+         <open:questionUsage>other</open:questionUsage>
+      </open:createQuestionRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

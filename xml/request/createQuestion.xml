@@ -1,0 +1,36 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:open="http://oss.dbc.dk/ns/openquestion">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <open:createQuestionRequest>
+         <open:agencyId>?</open:agencyId>
+         <open:qandaServiceName>?</open:qandaServiceName>
+         <!--Optional:-->
+         <open:userName>?</open:userName>
+         <!--Optional:-->
+         <open:userEmail>?</open:userEmail>
+         <!--Optional:-->
+         <open:userMobilePhone>?</open:userMobilePhone>
+         <!--Zero or more repetitions:-->
+         <open:userAnswerPreference>?</open:userAnswerPreference>
+         <!--Optional:-->
+         <open:userAge>?</open:userAge>
+         <!--Optional:-->
+         <open:userGender>?</open:userGender>
+         <!--Optional:-->
+         <open:userPostalCode>?</open:userPostalCode>
+         <!--Optional:-->
+         <open:questionTitle>?</open:questionTitle>
+         <open:questionContent>?</open:questionContent>
+         <!--Optional:-->
+         <open:questionNote>?</open:questionNote>
+         <!--Optional:-->
+         <open:questionDeadline>?</open:questionDeadline>
+         <!--Optional:-->
+         <open:questionUsage>?</open:questionUsage>
+         <!--Optional:-->
+         <open:outputType>?</open:outputType>
+         <!--Optional:-->
+         <open:callback>?</open:callback>
+      </open:createQuestionRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

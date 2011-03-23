@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:open="http://oss.dbc.dk/ns/openquestion">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <open:createQuestionResponse>
+         <!--You have a CHOICE of the next 2 items at this level-->
+         <open:questionReceipt>?</open:questionReceipt>
+         <open:error>?</open:error>
+      </open:createQuestionResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
