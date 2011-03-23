@@ -31,7 +31,7 @@
 	</wsdl:binding>
 	<wsdl:service name="openQuestionService">
 		<wsdl:port name="question" binding="oqw:questionSoapBinding">
-			<soap:address location="http://vision.dbc.dk/~fvs/broend/OpenLibrary/OpenQuestion/trunk/"/>
+			<soap:address location="http://openquestion.addi.dk/0.1/"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

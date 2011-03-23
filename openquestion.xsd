@@ -134,6 +134,7 @@
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="could not reach qandaService"/>
 			<xs:enumeration value="unknown agencyId"/>
+			<xs:enumeration value="authentication_error"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="outputTypeType">
