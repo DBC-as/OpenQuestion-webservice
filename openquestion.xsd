@@ -133,6 +133,10 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="could not reach qandaService"/>
+			<xs:enumeration value="missing question information"/>
+			<xs:enumeration value="missing user contact information"/>
+			<xs:enumeration value="missing user information"/>
+			<xs:enumeration value="questionContent is empty"/>
 			<xs:enumeration value="unknown agencyId"/>
 			<xs:enumeration value="authentication_error"/>
 		</xs:restriction>
