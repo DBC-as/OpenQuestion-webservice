@@ -15,6 +15,7 @@
 				<xs:element ref="oq:userAnswerPreference" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="oq:userAge" minOccurs="0"/>
 				<xs:element ref="oq:userGender" minOccurs="0"/>
+				<xs:element ref="oq:userLibraryPreference" minOccurs="0"/>
 				<xs:element ref="oq:userPostalCode" minOccurs="0"/>
 				<xs:element ref="oq:questionTitle" minOccurs="0"/>
 				<xs:element ref="oq:questionContent"/>
@@ -23,6 +24,7 @@
 				<xs:element ref="oq:questionUsage" minOccurs="0"/>
 				<xs:element ref="oq:outputType" minOccurs="0"/>
 				<xs:element ref="oq:callback" minOccurs="0"/>
+				<xs:element ref="oq:requestCheck"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -92,6 +94,7 @@
 			<xs:documentation xml:lang="en">Questioner's intended usage for the question</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="requestCheck"/>
 	<xs:element name="userAge" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's age</xs:documentation>
@@ -105,6 +108,11 @@
 	<xs:element name="userEmail" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's email-address</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="userLibraryPreference" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The user's library</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="userGender" type="oq:userGenderType">
