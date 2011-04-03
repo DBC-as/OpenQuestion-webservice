@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 (http://www.altova.com) by Dansk Bibliotekscenter A/S (Dansk Bibliotekscenter A/S) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oq="http://oss.dbc.dk/ns/openquestion" targetNamespace="http://oss.dbc.dk/ns/openquestion" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oq="http://oss.dbc.dk/ns/openquestion" targetNamespace="http://oss.dbc.dk/ns/openquestion" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="createQuestionRequest">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">The service request</xs:documentation>
@@ -94,7 +94,7 @@
 			<xs:documentation xml:lang="en">Questioner's intended usage for the question</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="requestCheck"/>
+	<xs:element name="requestCheck" type="oq:requestCheckType"/>
 	<xs:element name="userAge" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's age</xs:documentation>
@@ -168,6 +168,11 @@
 			<xs:enumeration value="school2"/>
 			<xs:enumeration value="school3"/>
 			<xs:enumeration value="school4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="requestCheckType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="userAnswerPreferenceType">
