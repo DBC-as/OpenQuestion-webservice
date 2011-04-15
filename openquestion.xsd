@@ -24,7 +24,6 @@
 				<xs:element ref="oq:questionUsage" minOccurs="0"/>
 				<xs:element ref="oq:outputType" minOccurs="0"/>
 				<xs:element ref="oq:callback" minOccurs="0"/>
-				<xs:element ref="oq:requestCheck"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -94,7 +93,6 @@
 			<xs:documentation xml:lang="en">Questioner's intended usage for the question</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="requestCheck" type="oq:requestCheckType"/>
 	<xs:element name="userAge" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Questioner's age</xs:documentation>
@@ -168,11 +166,6 @@
 			<xs:enumeration value="school2"/>
 			<xs:enumeration value="school3"/>
 			<xs:enumeration value="school4"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="requestCheckType">
-		<xs:restriction base="xs:string">
-			<xs:maxLength value="0"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="userAnswerPreferenceType">
