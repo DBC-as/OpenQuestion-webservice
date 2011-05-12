@@ -28,33 +28,63 @@
 require_once('OLS_class_lib/webServiceServer_class.php');
 
 class openQuestion extends webServiceServer {
+    protected $curl;
 
- /** \brief priceCheck -
-  *
-  * Request:
-  *   - CustomerIDType and CustomerID
-  *   - one or more: MatIDType and MatID
-  *
-  * Response:
-  */
-  public function createQuestion($param) {
-define('xDEBUG', FALSE);
-    $cqr = &$ret->createQuestionResponse->_value;
-    if (!$this->aaa->has_right('openquestion', 500))
-      $cqr->error->_value = 'authentication_error';
-    else {
-      $cqr->questionReceipt->_value = 'Ack';
+    /** \brief priceCheck -
+     *
+     * Request:
+     *   - CustomerIDType and CustomerID
+     *   - one or more: MatIDType and MatID
+     *
+     * Response:
+     */
+    public function createQuestion($param) {
+        define('xDEBUG', FALSE);
+        $cqr = &$ret->createQuestionResponse->_value;
+        if (!$this->aaa->has_right('openquestion', 500))
+            $cqr->error->_value = 'authentication_error';
+        else {
+            $req->createQuestionRequest->_namespace = $this->xmlns['open'];
+            foreach ($param as $key => $val)
+                if ($key <> 'authentication' && $val->_value) 
+                    $post_arr[$key] = $val->_value;
+            $this->curl->set_post($post_arr);
+            $this->curl->set_url($this->config->get_value('question_end_point', 'setup'));
+            $this->watch->start('curl');
+            $curl_result = $this->curl->get();
+            $curl_err = $this->curl->get_status();
+            $this->watch->stop('curl');
+
+            if ($curl_result == 'Question created') {
+                verbose::log(DEBUG, 'Created question with result: ' . $curl_result);
+                $cqr->questionReceipt->_value = 'Ack';
+            } else {
+                verbose::log(DEBUG, 'createQuestion:: Rejected question: ' . 
+                                    str_replace(array("\n", '    '), '', print_r($post_arr, TRUE)) . 
+                                    ' With result: ' . $curl_result);
+                $cqr->questionReceipt->_value = 'Nack';
+            }
+        }
+        if (xDEBUG) {
+            echo '<pre>';
+            echo '<br />'; print_r($curl_result);
+            echo '<br />'; print_r($curl_err);
+            echo '<br />'; print_r($param);
+            echo '<br />'; print_r($ret);
+            die();
+        }
+        return $ret;
     }
-    if (xDEBUG) { echo '<pre>'; print_r($param); print_r($ret); die(); }
-    return $ret;
-  }
 
 
-  public function __construct(){
-    webServiceServer::__construct('openquestion.ini');
+    public function __construct() {
+        webServiceServer::__construct('openquestion.ini');
 
-    $this->curl = new curl();
-  }
+        if (!$timeout = $this->config->get_value('curl_timeout', 'setup'))
+            $timeout = 20;
+        $this->curl = new curl();
+        $this->curl->set_option(CURLOPT_TIMEOUT, $timeout);
+    }
 
 }
 /*
