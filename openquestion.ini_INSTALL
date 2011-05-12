@@ -27,13 +27,17 @@ soapAction[createQuestion] = createQuestionRequest
 ;validate[request] = openquestion.xsd
 ;validate[response] = openquestion.xsd
 
+; Endpoint for question DB
+curl_timeout = 20
+question_end_point = http://some.server.dk/create_service
+
 ; prefixes and namespaces
 xmlns[] = http://oss.dbc.dk/ns/openquestion
 
 xmldir = ./xml
 
 ; logfile for verbose output
-logfile = /tmp/netpunkt_fvs/openquestion.log
+logfile = /tmp/openquestion.log
 
 ; set verboselevel
 ;   WARNING - simple warnings
@@ -49,8 +53,6 @@ verbose = WARNING+ERROR+FATAL+STAT+TIMER+TRACE+DEBUG+Z3950
 
 ; format for automatic timer dump %s is the soap-action used
 dump_timer = Question(%s)
-
-agency_credentials = some_user/some_pwd@some.server.dbc.dk
 
 [aaa]
 ; aaa Authentication, Access control and Accounting
