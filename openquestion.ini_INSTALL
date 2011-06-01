@@ -30,6 +30,7 @@ soapAction[createQuestion] = createQuestionRequest
 ; Endpoint for question DB
 curl_timeout = 20
 question_end_point = http://some.server.dk/create_service
+;http_proxy = proxy.some.server.dk:3456
 
 ; prefixes and namespaces
 xmlns[] = http://oss.dbc.dk/ns/openquestion
@@ -71,6 +72,8 @@ aaa_credentials = next_vip_kig/next@tora1.dbc.dk
 ; aaa_ip_rights[group-identifier][ressource][<named ressource>] = comma-separated rights to <named ressource>
 ; aaa_ip_rights[group-identifier][ressource][<named ressource 2>] = comma-separated rights to <named ressource 2>
 ;
+;aaa_ip_rights[all][ip_list] = 1.0.0.0-255.255.255.255
+;aaa_ip_rights[all][ressource][openquestion] = 500
 ;aaa_ip_rights[dbc][ip_list] = 172.16.0.0-172.31.255.255;193.111.162.0-193.111.162.255
 ;aaa_ip_rights[dbc][ressource][openquestion] = 500
 
