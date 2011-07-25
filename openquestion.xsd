@@ -22,6 +22,7 @@
 				<xs:element ref="oq:questionNote" minOccurs="0"/>
 				<xs:element ref="oq:questionDeadline" minOccurs="0"/>
 				<xs:element ref="oq:questionUsage" minOccurs="0"/>
+				<xs:element ref="oq:questionAttachment" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="oq:outputType" minOccurs="0"/>
 				<xs:element ref="oq:callback" minOccurs="0"/>
 			</xs:sequence>
@@ -61,6 +62,11 @@
 	<xs:element name="qandaServiceName" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Name of the QandA-servcice that shall recieve the question</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="questionAttachment" type="xs:hexBinary">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A file attached to the question</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="questionContent" type="xs:string">
