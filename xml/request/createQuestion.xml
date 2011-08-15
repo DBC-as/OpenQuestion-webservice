@@ -17,6 +17,8 @@
          <!--Optional:-->
          <open:userGender>?</open:userGender>
          <!--Optional:-->
+         <open:userLibraryPreference>?</open:userLibraryPreference>
+         <!--Optional:-->
          <open:userPostalCode>?</open:userPostalCode>
          <!--Optional:-->
          <open:questionTitle>?</open:questionTitle>
@@ -27,6 +29,11 @@
          <open:questionDeadline>?</open:questionDeadline>
          <!--Optional:-->
          <open:questionUsage>?</open:questionUsage>
+         <!--Zero or more repetitions:-->
+         <open:questionAttachment>
+            <open:questionAttachmentMimeType>?</open:questionAttachmentMimeType>
+            <open:questionAttachmentData>cid:1183227033447</open:questionAttachmentData>
+         </open:questionAttachment>
          <!--Optional:-->
          <open:outputType>?</open:outputType>
          <!--Optional:-->
