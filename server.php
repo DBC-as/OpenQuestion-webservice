@@ -46,7 +46,11 @@ class openQuestion extends webServiceServer {
         else {
             $req->createQuestionRequest->_namespace = $this->xmlns['open'];
             foreach ($param as $key => $val)
-                if ($key <> 'authentication' && $val->_value) 
+                if ($key == 'questionAttachment' && $val->_value) {
+                    foreach ($val->_value as $a_key => $a_val)
+                        if ($val->_value) 
+                            $post_arr[$a_key] = $a_val->_value;
+                } elseif ($key <> 'authentication' && $val->_value) 
                     $post_arr[$key] = $val->_value;
             $this->curl->set_post($post_arr);
             $this->curl->set_url($this->config->get_value('question_end_point', 'setup'));
@@ -84,6 +88,8 @@ class openQuestion extends webServiceServer {
             $timeout = 20;
         $this->curl = new curl();
         $this->curl->set_option(CURLOPT_TIMEOUT, $timeout);
+        if ($proxy = $this->config->get_value('http_proxy', 'setup'))
+            $this->curl->set_proxy($proxy);
     }
 
 }
