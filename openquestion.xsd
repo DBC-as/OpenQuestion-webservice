@@ -9,6 +9,7 @@
 			<xs:sequence>
 				<xs:element ref="oq:agencyId"/>
 				<xs:element ref="oq:qandaServiceName"/>
+				<xs:element ref="oq:editorial" minOccurs="0"/>
 				<xs:element ref="oq:userName" minOccurs="0"/>
 				<xs:element ref="oq:userEmail" minOccurs="0"/>
 				<xs:element ref="oq:userMobilePhone" minOccurs="0"/>
@@ -47,6 +48,11 @@
 	<xs:element name="callback" type="xs:string">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">If outputType=json.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="editorial" type="xs:string">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">If the QandA service uses editorials, editorial can be set in advance on the question, using this parameter.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="error" type="oq:errorType">
