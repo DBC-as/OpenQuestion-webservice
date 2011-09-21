@@ -50,8 +50,12 @@ class openQuestion extends webServiceServer {
                     foreach ($val->_value as $a_key => $a_val)
                         if ($val->_value) 
                             $post_arr[$a_key] = $a_val->_value;
-                } elseif ($key <> 'authentication' && $val->_value) 
-                    $post_arr[$key] = $val->_value;
+                } elseif ($key <> 'authentication' && $val->_value) {
+                    if ($key == 'editorial')
+                        $post_arr['vopros_editorial'] = $val->_value;
+                    else
+                        $post_arr[$key] = $val->_value;
+                }
             $this->curl->set_post($post_arr);
             $this->curl->set_url($this->config->get_value('question_end_point', 'setup'));
             $this->watch->start('curl');
