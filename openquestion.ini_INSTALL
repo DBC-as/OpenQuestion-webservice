@@ -98,6 +98,7 @@ aaa_credentials = next_vip_kig/next@tora1.dbc.dk
 
 action[createQuestion][] = agencyId
 action[createQuestion][] = qandaServiceName
+action[createQuestion][] = editorial
 action[createQuestion][] = userName
 action[createQuestion][] = userEmail
 action[createQuestion][] = userMobilePhone
