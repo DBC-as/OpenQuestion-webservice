@@ -67,6 +67,9 @@ class openQuestion extends webServiceServer {
                 verbose::log(DEBUG, 'Created question with result: ' . $curl_result);
                 $cqr->questionReceipt->_value = 'Ack';
             } else {
+                if ($curl_err['http_code'] < 200 || $curl_err['http_code'] > 299)
+                    verbose::log(FATAL, 'Endpoint http-error: ' . $curl_err['http_code'] . 
+                                        ' from: ' . $this->config->get_value('question_end_point', 'setup'));
                 verbose::log(DEBUG, 'createQuestion:: Rejected question: ' . 
                                     str_replace(array("\n", '    '), '', print_r($post_arr, TRUE)) . 
                                     ' With result: ' . $curl_result);
