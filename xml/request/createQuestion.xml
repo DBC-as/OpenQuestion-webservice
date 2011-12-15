@@ -5,6 +5,8 @@
          <open:agencyId>?</open:agencyId>
          <open:qandaServiceName>?</open:qandaServiceName>
          <!--Optional:-->
+         <open:editorial>?</open:editorial>
+         <!--Optional:-->
          <open:userName>?</open:userName>
          <!--Optional:-->
          <open:userEmail>?</open:userEmail>
@@ -32,7 +34,7 @@
          <!--Zero or more repetitions:-->
          <open:questionAttachment>
             <open:questionAttachmentMimeType>?</open:questionAttachmentMimeType>
-            <open:questionAttachmentData>cid:1183227033447</open:questionAttachmentData>
+            <open:questionAttachmentData>cid:981599404909</open:questionAttachmentData>
          </open:questionAttachment>
          <!--Optional:-->
          <open:outputType>?</open:outputType>
