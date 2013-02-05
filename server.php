@@ -29,6 +29,8 @@ require_once('OLS_class_lib/webServiceServer_class.php');
 
 class openQuestion extends webServiceServer {
     protected $curl;
+    protected $end_point;
+    protected $default_end_point;
 
     /** \brief priceCheck -
      *
@@ -56,8 +58,13 @@ class openQuestion extends webServiceServer {
                     else
                         $post_arr[$key] = $val->_value;
                 }
+            $question_end_point = $this->end_point[$param->qandaServiceName->_value];
+            if (empty($question_end_point)) {
+              $question_end_point = $this->end_point[$this->default_end_point];
+            }
+die($question_end_point);
             $this->curl->set_post($post_arr);
-            $this->curl->set_url($this->config->get_value('question_end_point', 'setup'));
+            $this->curl->set_url($question_end_point);
             $this->watch->start('curl');
             $curl_result = $this->curl->get();
             $curl_err = $this->curl->get_status();
@@ -97,7 +104,15 @@ class openQuestion extends webServiceServer {
         $this->curl->set_option(CURLOPT_TIMEOUT, $timeout);
         if ($proxy = $this->config->get_value('http_proxy', 'setup'))
             $this->curl->set_proxy($proxy);
-    }
+        $this->end_point = $this->config->get_value('question_end_point', 'setup');
+        if (!is_array($this->end_point)) {
+          die('question_end_point not found in ini-file');
+        }
+        $this->default_end_point = $this->config->get_value('default_question_end_point', 'setup');
+        if (empty($this->end_point[$this->default_end_point])) {
+          die('default_question_end_point not defined in ini-file');
+        }
+}
 
 }
 /*

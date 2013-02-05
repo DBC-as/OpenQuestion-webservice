@@ -1,4 +1,4 @@
-; inifie for openquestion
+; inifile for openquestion
 
 [setup]
 ; To close a service, set service_http_error
@@ -7,7 +7,7 @@
 ;service_http_error = HTTP/1.1 410 Gone
 ;service_http_error = HTTP/1.0 503 Service Unavailable
 
-version = 1.0
+version = 1.1
 
 ; wsdl for service
 wsdl = openquestion.wsdl
@@ -29,7 +29,9 @@ soapAction[createQuestion] = createQuestionRequest
 
 ; Endpoint for question DB
 curl_timeout = 20
-question_end_point = http://some.server.dk/create_service
+default_question_end_point = some_end_point
+question_end_point[some_end_point] = http://some.server.dk/create_service
+question_end_point[some_other_end_point] = http://someother.server.dk/create_service
 ;http_proxy = proxy.some.server.dk:3456
 
 ; prefixes and namespaces
